@@ -7,12 +7,13 @@ const overlay=document.getElementById('overlay')
 changeLocation.city.focus()
 /////////////////////////update ui
 const weatherUi=(data)=>{
+  console.log("weatherUi",data.weather[0].main);
     card.innerHTML=`
     <div class="icon-container">
     <img
       id="weather-icon"
       class="icon"
-      src=URL is https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png
+      src=https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png
       alt=""
       width="100"
       height="100"
@@ -28,10 +29,8 @@ const weatherUi=(data)=>{
     </div>
   </div>
     `
-    if (card.classList.contains('d-none')) {
-        card.classList.remove("d-none")
-    }
 }
+
 
 
 const getWeather =async (city)=>{
@@ -46,5 +45,5 @@ changeLocation.addEventListener("submit" ,(e)=>{
     const cityName=changeLocation.city.value.trim();
     changeLocation.reset();
     console.log(cityName)
-    getWeather(cityName).then((res)=>weatherUi(res))
+    getWeather(cityName)
 })

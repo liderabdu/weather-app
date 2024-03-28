@@ -30,11 +30,11 @@ const Key = '7b70ff554038e9d237eaee41e3474f4b'
 
 const getData=async (city)=>{
   const base='https://api.openweathermap.org/data/2.5/weather'
-  const query=`?q=${city}&units=matric&appid=${Key}`
+  const query=`?q=${city}&units=metric&appid=${Key}`
 
-  const req=await fetch(base+query)
-  const data =await req.json()
-  console.log(req);
-  return data
+  const data=await fetch(base+query)
+  const res =await data.json()
+  console.log(res);
+  return res
 }
 getData()
